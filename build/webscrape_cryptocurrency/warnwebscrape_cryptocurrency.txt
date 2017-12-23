@@ -1,0 +1,23 @@
+missing module named resource - imported by posix, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named posix - imported by os, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named _posixsubprocess - imported by subprocess, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named 'org.python' - imported by pickle, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py, xml.sax
+missing module named readline - imported by cmd, code, pdb, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+excluded module named _frozen_importlib - imported by importlib, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named java - imported by platform, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named 'java.lang' - imported by platform, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named termios - imported by tty, getpass, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named _dummy_threading - imported by dummy_threading, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named grp - imported by tarfile, shutil, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named org - imported by copy, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named pwd - imported by posixpath, tarfile, shutil, http.server, webbrowser, getpass, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named ce - imported by os, C:\Users\nelso_8bi0ds3\Desktop\webscraping\cryptocurrency-updater\webscrape_cryptocurrency.py
+missing module named iconv_codec - imported by bs4.dammit
+missing module named chardet - imported by bs4.dammit
+missing module named cchardet - imported by bs4.dammit
+missing module named lxml - imported by bs4.builder._lxml
+missing module named 'html5lib.treebuilders' - imported by bs4.builder._html5lib
+missing module named 'html5lib.constants' - imported by bs4.builder._html5lib
+missing module named html5lib - imported by bs4.builder._html5lib
+missing module named _scproxy - imported by urllib.request
