@@ -14,15 +14,15 @@ for currency in currencyList:
 prevPriceList = []
 priceList = []
 
-#iterations = StringVar()
-number = 0
+numberOfIterations = 0
 def write_prices(data_list):
     """sets the entries of the GUI to the currency's real price
     """
-    global number
+    global numberOfIterations
     global iterationLabel
-    number+=1
-    iterations.set('iterations: '+str(number))
+    numberOfIterations+=1
+    iterations.set('iterations: '+str(numberOfIterations))
+    time.set('last updated: '+str(datetime.datetime.now().time())[:-7])
     for i in range(len(data_list)):
         entryTextPointers[i].set(data_list[i])
 
@@ -31,7 +31,8 @@ def start_scraping():
     """
     uClientList = []
     htmlList = []
-
+    global priceList, prevPriceList
+    
     #access the website and construct a list of uClients' data
     for url in urlList:
         uClient = uReq(url)
@@ -43,27 +44,21 @@ def start_scraping():
     for html in htmlList:
         pageSoupList.append(soup(html, "html.parser"))
 
+    priceList = []
+    #extract the price out of the pageSoup
     for pageSoup in pageSoupList:
         priceList.append(str(pageSoup.findAll("span",{"id":"quote_price"})).split()[6][23:-7])
 
-    #extract the price out of the pageSoup
-    analysis = 'Time: ' + str(datetime.datetime.now().time())[:-7] + '.........'
-
-    data_list = []
-    for i in range(len(currencyList)):
-        currency = currencyList[i]
-        analysis += currency + ': $' + priceList[i] + '   '
-        data_list.append(priceList[i])
-    write_prices(data_list) #call function to set entries to real price
+    write_prices(priceList)
     
     #determine whether or not a price has changed
-    global priceList, prevPriceList
-##        if priceList != prevPriceList:
-##            print('~One of the prices just changed!')
+    
+    if priceList != prevPriceList:
+        print(priceList, prevPriceList)
+        print('~One of the prices just changed!')
     prevPriceList = priceList[:]
     
-
-scrape_again = 1
+scrape_again = 1 #initialize to some value
 #infinite
 def base(event):
     """function that calls a scheduling function to scrape again
@@ -75,12 +70,11 @@ def start_infinite():
     """
     m = start_scraping()
     global scrape_again
-    scrape_again = frame.after(7000, start_infinite)
+    scrape_again = frame.after(20000, start_infinite) #every 20 seconds
 
 def stop_infinite(event):
-    """ends the scraping loop
+    """ends the scraping scheduling loop
     """
-    print(scrape_again)
     frame.after_cancel(scrape_again)
 
 #GUI
@@ -89,6 +83,7 @@ frame = Frame(root)
 root.title("Crytocurrency Updater")
 
 iterations = StringVar()
+time = StringVar()
 currencyEntryList = []
 entryTextPointers = []
 columnCount=0
@@ -115,8 +110,13 @@ endButton.grid(row = 3, column=0, sticky=W, padx=10)
 
 #show number of iterations
 iterationLabel = Label(frame, textvariable=iterations)
-iterationLabel.grid(row=4, column=0, sticky=W)
+iterationLabel.grid(row=4, column=0, sticky=W, padx=5)
 iterations.set('iterations: 0')
+
+#show last updated
+updatedLabel = Label(frame, textvariable=time)
+updatedLabel.grid(row=4, column=1, sticky=W)
+time.set('last updated:')
 
 frame.pack()
 
