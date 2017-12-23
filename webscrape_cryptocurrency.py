@@ -29,8 +29,8 @@ def write_prices(data_list):
         if len(prevPriceList)!=0:
             diff = float(data_list[i])-float(prevPriceList[i])
             changeLabelsList[i].set(round(diff, 3))
+    print('prev:',prevPriceList,'cur:',priceList)
     
-
 def start_scraping():
     """scrapes the web urls for the price of each cryptocurrency
     """
@@ -55,7 +55,7 @@ def start_scraping():
         priceList.append(str(pageSoup.findAll("span",{"id":"quote_price"})).split()[6][23:-7])
 
     write_prices(priceList) #call function to display new text
-    prevPriceList = priceList[:]
+    prevPriceList = priceList[:] #deep copy
     
 scrape_again = 1 #initialize to some value
 #infinite
@@ -69,7 +69,7 @@ def start_infinite():
     """
     m = start_scraping()
     global scrape_again
-    scrape_again = frame.after(20000, start_infinite) #every 20 seconds
+    scrape_again = frame.after(10000, start_infinite) #every 20 seconds
 
 def stop_infinite(event):
     """ends the scraping scheduling loop
@@ -108,7 +108,7 @@ endButton.bind('<Button-1>', stop_infinite)
 endButton.grid(row = 4, column=0, sticky=W, padx=10)
 
 #show change since last 20 seconds
-Label(frame, text='20(s) change:').grid(row=2, column=0, sticky=W, padx=5)
+Label(frame, text='10(s) change:').grid(row=2, column=0, sticky=W, padx=5)
 changeLabelsList = []
 columnCount2=0
 for currency in currencyList:
